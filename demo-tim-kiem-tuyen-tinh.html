@@ -7,23 +7,26 @@
 
     <script>
 
-        let myArray = [7, 9, 6, 3, 5, 10, -4, -100, 50];
+        let myArray = [7, 9, 6, 3, 5, 10, 5, -100, 50];
         let seek_number = 5;
 
         let is_found = false;
+        let count = 0;
 
-        for (let i = 1; i < myArray.length; i++) {
+        for (let i = 0; i < myArray.length; i++) {
             let number = myArray[i]; // lấy giá trị của phần tử i
             if (number == seek_number) {
-                document.write("Số " + seek_number + " tồn tại trong mảng tại chỉ số " + i );
+                document.write("Số " + seek_number + " tồn tại trong mảng tại chỉ số " + i + "<br>");
                 is_found = true;
-                break;
+                count++;
             }
         }
 
         if (is_found == false) {
-            document.write("Số " + seek_number + " không tồn tại trong mảng.");
+            document.write("Số " + seek_number + " không tồn tại trong mảng.<br>");
         }
+
+        document.write("Tìm thấy " + count + " phần tử có giá trị là " + seek_number);
 
     </script>
     
