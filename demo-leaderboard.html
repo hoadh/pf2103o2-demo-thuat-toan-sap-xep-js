@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body onload="show_points()">
+
+    <ol id="leaderboard"></ol>
+
+    <input type="text" id="point" />
+    <button onclick="save_point()">Save Point</button>
+
+    <script>
+
+        function save_point() {
+            let point = document.getElementById("point").value;
+
+            let points = JSON.parse(localStorage.getItem("POINTS"));
+
+            // Lần đầu tiên chơi game, điểm trong bộ nhớ chưa có
+            // points là null.
+            if (points === null) {
+                points = [];
+            }
+
+            points.push(point);
+
+            localStorage.setItem("POINTS", JSON.stringify(points));
+        }
+
+        function show_points() {
+            let points = JSON.parse(localStorage.getItem("POINTS"));
+            if (points === null) {
+                points = [];
+            }
+            sortBubble(points);
+
+            let leaderboard = document.getElementById("leaderboard");
+
+            for (let i = 0; i < points.length; i++) {
+                let li = document.createElement("li");
+                li.innerHTML = points[i];
+                leaderboard.appendChild(li); 
+            }
+        }
+
+        function sortBubble(array) {
+
+            for (let i = 0; i < array.length; i++) {
+
+                for (let j = i+1; j < array.length; j++) {
+                    if (array[i] < array[j]) {
+                        let temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

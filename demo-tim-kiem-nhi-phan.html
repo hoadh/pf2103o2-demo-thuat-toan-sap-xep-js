@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <script>
+        let myArray = [1, 5, 7, 11, 14, 20, 32, 50, 100];
+        let seek_number = 100;
+
+        let is_found = false;
+
+        let start = 0;
+        let end = myArray.length - 1;
+
+        while (start <= end) {
+
+            let middle = Math.floor((start + end) / 2);
+
+            if (myArray[middle] === seek_number) {
+                document.write("Số " + seek_number + " tồn tại trong mảng tại chỉ số " + middle + "<br>");
+                is_found = true;
+                break;
+            }
+
+            if (seek_number > myArray[middle]) {
+                start = middle + 1;
+            } else {
+                end = middle - 1;
+            }
+
+        }
+
+        if (is_found == false) {
+            document.write("Số " + seek_number + " không tồn tại trong mảng.<br>");
+        }
+
+    </script>
+    
+</body>
+</html>
